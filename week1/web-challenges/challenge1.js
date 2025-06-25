@@ -27,11 +27,13 @@ function userStatus(data) {
     .filter((entry) => entry.status === "offline")
     .map((entry) => entry.username);
 
-  return {
-    online,
-    away,
-    offline,
-  };
+  return away.length > 0 || online.length > 0 || offline.length > 0
+    ? {
+        online,
+        away,
+        offline,
+      }
+    : [];
 }
 
 console.log(userStatus(data));
